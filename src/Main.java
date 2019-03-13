@@ -15,6 +15,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		
 		employeeService = new EmployeeService();
+		System.out.println("columns example: Date | Hour | First Name | Last Name | Section");
 		System.out.println("Enter csv file name: ");
 		Scanner scanner = new Scanner(System.in);
 		String fileName = scanner.nextLine();
@@ -37,6 +38,9 @@ public class Main {
 		List<Employee> employees = new ArrayList<>();
 
 		for (int i = 0; i < lines.size(); i++) {
+			if(lines.get(i).split(";").length < 5) {
+				continue;
+			}
 			String firstName = lines.get(i).split(";")[2].trim();
 			
 			if (firstName.length() == 0) {
